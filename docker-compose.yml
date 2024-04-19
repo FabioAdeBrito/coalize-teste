@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  php:
+    build: .
+    volumes:
+      - ./api-teste-coalize:/app
+    ports:
+      - "8000:80"
+    command: ["php", "-S", "0.0.0.0:80", "-t", "/app"]
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3307:3306"
